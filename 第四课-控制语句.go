@@ -51,6 +51,7 @@ func main() {
 	}
 	fmt.Printf("a值为:%d\n" ,a)
 	fmt.Printf("b值为:%d\n", b)
+
 	/* if支持初始化表达式 */
 	if c,d := 22,44;d>c {
 		fmt.Printf("d大于c")
@@ -66,11 +67,13 @@ func main() {
 		fmt.Println("a的值为:",a)
 		}
 	fmt.Println("Over")
+
 	/* for的第二种形式  for 条件表达式 { }*/
 	for a < b {
 		a ++
 		fmt.Println("a的值为:",a)
 	}
+
 	/* for的第三种形式 */
 	for a := 0; a < 10; a++ {
       		fmt.Printf("a 的值为: %d\n", a)
@@ -113,7 +116,21 @@ func main() {
          		fmt.Printf("差\n" );
 		}
    	fmt.Printf("你的等级是 %s\n", grade );
-	/* switch第三种形式(跟赋值语句)   switch marks a := 1; {  } */
+
+	/* switch 语句还可以被用于 type-switch 来判断某个 interface 变量中实际存储的变量类型。 */
+	var x interface {}
+	switch i := x.(type) {
+	case nil:
+		fmt.Println(" x 的类型 :%T",i)
+	case int:
+		fmt.Println("x是int类型")
+	case string:
+		fmt.Println("x是string类型")
+	case bool:
+         fmt.Printf("x 是 bool型" )
+      default:
+         fmt.Printf("未知型")
+	}
 
 	/* goto 跳转 */
 	for i := 1; i < 10;i++ {
