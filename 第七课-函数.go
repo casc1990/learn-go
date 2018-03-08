@@ -127,3 +127,4 @@ func main() {
 	even := filter(slice, isEven)  // 函数当做值来传递了
     	fmt.Println("Even elements of slice are: ", even) //输出：Even elements of slice are:  [2 4]
 }
+
