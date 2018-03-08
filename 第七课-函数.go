@@ -33,4 +33,7 @@ func main() {
 	fmt.Printf("max(%d,%d) = %d\n",y,z,max(y,z)) /* max(4,-5) = 4; 也可以直接调用 */
 
 
+
+
+
 }
