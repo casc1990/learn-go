@@ -17,8 +17,11 @@ func max(a,b int) int {
 	}
 	return b
 }
-
-func SumAndProduct()
+/* 返回A+B 和 A*B */
+func SumAndProduct(A,B int)(int,int) {
+	return A+B,A*B
+	/* fmt.Print("会不会执行呢?") */
+}
 
 func main() {
 	x := 3
@@ -31,6 +34,10 @@ func main() {
 	fmt.Printf("max(%d,%d) = %d\n",x,y,max_xy) /* max(3,4) = 4 */
 	fmt.Printf("max(%d,%d) = %d\n",x,z,max_xz) /* max(3,-5) = 3 */
 	fmt.Printf("max(%d,%d) = %d\n",y,z,max(y,z)) /* max(4,-5) = 4; 也可以直接调用 */
+
+	xPLUSY, xTIMESY := SumAndProduct(x,y)  /* 函数多返回值  */
+	fmt.Printf("%d + %d = %d\n", x, y, xPLUSY)
+    	fmt.Printf("%d * %d = %d\n", x, y, xTIMESY)
 
 
 
