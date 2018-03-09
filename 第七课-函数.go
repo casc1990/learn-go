@@ -9,6 +9,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 /*  求最大值函数，接收两个参数，返回值是int类型 */
 func max(a,b int) int {
@@ -91,6 +92,30 @@ func filter(slice []int,f testInt) []int {
 	return result
 }
 
+/*  Panic和Recover
+ panic：由程序运行出错产出或者直接调用panic产生，panic中断原有控制流程，如果有defer函数，会跳到执行defer函数，否则异常退出
+ recover：恢复异常，仅在defer函数中有效；正常执行过程中，调用recover返回nil，panic模式下，调用recover可以捕获到panic的输入值，并且恢复正常的执行
+ */
+func myPainc() {
+	fmt.Println("panic开始之前...\n")
+	panic("程序panic啦...\n")   /*  程序panic之后调用了defer函数，panic之后的程序不会再执行了  */
+	fmt.Println("panic之后不会执行..\n")
+}
+
+
+/* main函数和init函数（不能有任何的参数和返回值）
+main：main函数只能存在于package main里，而且只能有一个
+init: init可以存在所有的package里，而且可以都多个，init函数先于main函数执行
+import: 包只会导入一次，如果要导入的包里还导入了其他包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推
+*/
+var user = os.Getenv("USER")  /*  获取当前用户 */
+ func init() {   //init函数会被首先执行。。
+	 if user == "" {
+		fmt.Println("no value for user")
+	 }
+ }
+
+
 func main() {
 	x := 3
 	y := 4
@@ -120,11 +145,24 @@ func main() {
 		defer fmt.Printf("%d\n", i) /* 输出：4 3 2 1 0 */
 	}
 
+	/*  函数作为值、类型 */
 	slice := []int {1,2,3,4,5,7}
 	fmt.Println("slice =",slice)
 	odd := filter(slice,isOdd)  // 函数当做值来传递了
 	fmt.Println("Odd elements of slice are:",odd)  //输出：Odd elements of slice are: [1 3 5 7]
 	even := filter(slice, isEven)  // 函数当做值来传递了
     	fmt.Println("Even elements of slice are: ", even) //输出：Even elements of slice are:  [2 4]
+
+	/* defer函数 */
+	defer func() {
+		fmt.Print("defer函数用来做收尾工作，函数退出之前执行，一般配合recover捕捉异常")
+		if err := recover(); err != nil {  /* recover函数保存了panic的出错信息，如果正常，panic为空，否则，为错误信息  */
+			fmt.Print(err)  /*  打印出错信息 */
+		}
+		fmt.Print("defer执行完成\n")
+	}()
+	myPainc()   /* 调用自定义的panic函数  */
+
+
 }
 
