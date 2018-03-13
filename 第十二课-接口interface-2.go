@@ -84,4 +84,6 @@ func main() {
 	//调用GetArea函数，计算面积（调用对象实例的area方法）
 	fmt.Println("Rectangle Area = ",GetArea(r))  //Rectangle Area =  200
 	fmt.Println("Circle Area =",GetArea(c))
+
+
 	}
