@@ -3,7 +3,8 @@ package main
 //判断是否是该类型的变量： value, ok = element.(T)，这里value就是变量的值，ok是一个bool类型，element是interface变量，T是断言的类型。
 import (
 	"fmt"
-	"strconv"
+	"strconv"  //strconv.Itoa(int):将int转换成string；strconv.Atoi(string)：将string转换成int
+	"math"
 )
 
 
@@ -17,6 +18,33 @@ type Person struct {
 func (p Person) String() string {
 	return "name:" + p.name + " age: "+ strconv.Itoa(p.age) + " years"
 }
+
+//interface嵌入：如果一个interface1作为interface2的一个嵌入字段，那么interface2隐式的包含了interface1里面的method
+type Rectangle struct {
+	width float64
+	height float64
+}
+type Circle struct {
+	radius float64
+}
+func (r Rectangle) area() float64 {
+	return r.width * r.height
+}
+func (c Circle) area() float64 {
+	return math.Pi * math.Pow(c.radius,2)   //math.Pow(int,2)：求int的2次方
+}
+//定义Shape结构体
+type Shape interface {
+	area() float64
+}
+type MultiShape interface {
+	Shape   //嵌入Shape接口，继承Shape的所有method
+}
+//定义GetArea函数，接收实现了MultiShape接口的对象实例，然后调用对象实例的area方法
+func GetArea(shape MultiShape) float64 {
+	return shape.area()
+}
+
 
 func main() {
 	list := make(List,3)
@@ -50,6 +78,10 @@ func main() {
 			}
 		}
 
-	//interface嵌入
-
+	//interface嵌入：如果一个interface1作为interface2的一个嵌入字段，那么interface2隐式的包含了interface1里面的method
+	r := Rectangle{20,10}
+	c := Circle{4}
+	//调用GetArea函数，计算面积（调用对象实例的area方法）
+	fmt.Println("Rectangle Area = ",GetArea(r))  //Rectangle Area =  200
+	fmt.Println("Circle Area =",GetArea(c))
 	}
