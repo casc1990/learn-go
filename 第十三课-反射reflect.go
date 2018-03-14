@@ -11,7 +11,7 @@ type User struct {
 	Name string
 	Age int
 }
-func (u User) Hello() {
+func (u User) Hello(name string) {
 	fmt.Println("hello!",u.Name)
 }
 func Info(o interface{}) {
@@ -31,8 +31,16 @@ func Info(o interface{}) {
 	for i :=0;i< types.NumMethod(); i++ {
 		m := types.Method(i) //取每个方法
 		fmt.Println("Method:")
-		fmt.Printf("smethod list: %s",m.Name)
+		fmt.Printf("smethod list: %s\n",m.Name)
 	}
+
+	//通过反射来进行方法的调用
+	mv := v.MethodByName("Hello")  //调用Hello方法
+	args := []reflect.Value{reflect.ValueOf("Corwien")}  //生成字符串类型的数组
+	fmt.Println(args)  //[Corwien]
+	mv.Call(args) //hello! xiaoming ;调用Hello方法
+
+
 
 }
 
@@ -46,6 +54,6 @@ func main()  {
 	fmt.Println("value:", v.Float()) //value: 3.4; (Value有Int和Float的方法可以获取存储在内部的值)
 
 	//通过传递的对象，获取方法，字段等等
-	u := User{12,"ok",25}
+	u := User{12,"xiaoming",25}
 	Info(u)
 }
