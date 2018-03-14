@@ -34,7 +34,7 @@ func Info(o interface{}) {
 		fmt.Printf("smethod list: %s\n",m.Name)
 	}
 
-	//通过反射来进行方法的调用
+	//通过反射来进行方法的调用（Value的Call方法的参数是一个Value的slice，返回值也是一个Value的slice）
 	mv := v.MethodByName("Hello")  //调用Hello方法
 	args := []reflect.Value{reflect.ValueOf("Corwien")}  //生成字符串类型的数组
 	fmt.Println(args)  //[Corwien]
