@@ -1,9 +1,9 @@
 package main
 
 //method:是附属在一个给定的类型上的，他的语法和函数的声明语法几乎一样，只是在func后面增加了一个receiver(也就是method所依从的主体)
-//  定义语法：func (r 作用于的那个主体) funcName(参数,...) (返回值类型) {}
+//  定义语法：func (r 作用于的那个主体) methodName(参数,...) (返回值类型) {}
 //如果一个method的receiver是*T,你可以在一个T类型的实例变量V上面调用这个method，而不需要&V去调用这个method
-//如果一个method的receiver是T，你可以在一个T类型的变量P上面调用这个method，而不需要 P去调用这个method
+//如果一个method的receiver是T，你可以在一个T类型的变量P上面调用这个method，而不需要*P去调用这个method
 import (
 	"fmt"
 	"math"

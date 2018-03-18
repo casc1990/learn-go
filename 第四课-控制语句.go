@@ -69,7 +69,7 @@ func main() {
 	fmt.Println("Over")
 
 	/* for的第二种形式  for 条件表达式 { }*/
-	for a < b {
+	for a < b {  //如果a < b成立，不断循环for代码块里的语句，类似于while循环
 		a ++
 		fmt.Println("a的值为:",a)
 	}
@@ -99,29 +99,29 @@ func main() {
    	switch marks {
       		case 90: grade = "A"
       		case 80: grade = "B"
-      		case 50,60,70 : grade = "C"
+      		case 50,60,70 : grade = "C"  //多值匹配
       		default: grade = "D"
 		}
-	/* switch第二种形式  */
+	/* switch第二种形式，表达式放在case里  */
    	switch {
       		case grade == "A" :
          		fmt.Printf("优秀!\n" )
-      		case grade == "B", grade == "C" :
+      		case grade == "B", grade == "C" :  //联合条件
          		fmt.Printf("良好\n" )
       		case grade == "D" :
          		fmt.Printf("及格\n" )
       		case grade == "F":
          		fmt.Printf("不及格\n" )
       		default:
-         		fmt.Printf("差\n" );
+         		fmt.Printf("差\n" )
 		}
-   	fmt.Printf("你的等级是 %s\n", grade );
+   	fmt.Printf("你的等级是 %s\n", grade )
 
 	/* switch 语句还可以被用于 type-switch 来判断某个 interface 变量中实际存储的变量类型。 */
 	var x interface {}
 	switch i := x.(type) {
 	case nil:
-		fmt.Println(" x 的类型 :%T",i)
+		fmt.Printf(" x 的类型 :%T\n",i)
 	case int:
 		fmt.Println("x是int类型")
 	case string:
@@ -137,6 +137,7 @@ func main() {
 		if i > 3 {
 			goto label1  /* 去到 label1处 */
 		}
+		fmt.Println("i is: ",i)
 	}
 	label1:
 		fmt.Println("ok")

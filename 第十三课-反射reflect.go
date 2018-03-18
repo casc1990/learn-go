@@ -20,7 +20,7 @@ func Info(o interface{}) {
 	fmt.Println("This is type:",types.Name()) //This is type: User
 	//获取字段内容
 	v := reflect.ValueOf(o)
-	fmt.Println(v)  //{12 ok 25}
+	fmt.Println(v)  //{12 xiaoming 25}
 	fmt.Println("Fields:")
 	for i :=0;i < types.NumField(); i++ { //types.NumField()取字段的数量
 		field := types.Field(i)  //取每个字段

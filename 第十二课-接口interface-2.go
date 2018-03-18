@@ -14,7 +14,7 @@ type Person struct {
 	name string
 	age int
 }
-//Person定义了String方法，实现fmt.Stringrt
+//Person定义了String方法，实现fmt.String
 func (p Person) String() string {
 	return "name:" + p.name + " age: "+ strconv.Itoa(p.age) + " years"
 }
@@ -33,7 +33,7 @@ func (r Rectangle) area() float64 {
 func (c Circle) area() float64 {
 	return math.Pi * math.Pow(c.radius,2)   //math.Pow(int,2)：求int的2次方
 }
-//定义Shape结构体
+//定义Shape接口
 type Shape interface {
 	area() float64
 }
@@ -42,18 +42,18 @@ type MultiShape interface {
 }
 //定义GetArea函数，接收实现了MultiShape接口的对象实例，然后调用对象实例的area方法
 func GetArea(shape MultiShape) float64 {
-	return shape.area()
+	return shape.area()   //MultiShape继承了Shape接口的area()
 }
 
 
 func main() {
-	list := make(List,3)
+	list := make(List,3)  //定义一个能存储3个元素的空接口类型的slice
 	list[0] = 1 // an int
-      	list[1] = "Hello" // a string
-      	list[2] = Person{"Dennis", 70} //a struct
+	list[1] = "Hello" // a string
+	list[2] = Person{"Dennis", 70} //a struct
 	//Comma-ok断言
 	for index,element := range list {
-		if value,ok := element.(int); ok {
+		if value,ok := element.(int); ok {  //判断对象是否是int类型
 			fmt.Printf("list[%d] is an int and its value is %d\n", index, value)
 		}else if value,ok := element.(string); ok  {
 			fmt.Printf("list[%d] is an string and its value is %s\n", index, value)
@@ -62,7 +62,7 @@ func main() {
 		}
 	}
 
-	//switch测试
+	//switch测试(仅适用测试interface类型)
 	for index,element := range list {
 		switch value := element.(type) {
 			case int :

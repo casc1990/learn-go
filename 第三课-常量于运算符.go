@@ -50,7 +50,7 @@ const (
 const (
 	/* 计算存储单位占位的字节数，1<<10 =1024，然后配合iota  */
 	_ = iota
-	KB float64 = 1 << (iota * 10)
+	KB int = 1 << (iota * 10)
 	MB
 	GB
 	TB
@@ -62,7 +62,7 @@ var (
 )
 
 func main()  {
-	fmt.Println(a,b,c,d,e)
+	fmt.Println(a,b,c,d,e) //输出：abc abc 3 A A
 	fmt.Println(Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)  /* 结果：0 1 33 3 4 5 6  */
-	fmt.Println(KB,GB,TB,PB)
+	fmt.Println(KB,MB,GB,TB,PB) //1024 1048576 1073741824 1099511627776 1125899906842624
 }

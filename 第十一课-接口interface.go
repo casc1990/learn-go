@@ -47,7 +47,7 @@ func (e *Employee) SpendSalary(amount float32) {
 }
 
 //定义interface
-//Interface Men被Human,Student和Employee实现,因为这三个类型都实现了这两个方法
+//Human,Student和Employee都实现了Interface Men的所有方法,因此他们实现了此接口
 type Mem interface {
 	Sayhi()
 	Sing(lyrics string)
@@ -76,7 +76,7 @@ func main() {
 	paul := Student{Human{"Paul",26,"5678"},"qinghua",100}
 	sam := Employee{Human{"Sam",36,"8901"},"JD",1000}
 	tom := Employee{Human{"Tom",37,"5555"},"baidu",5000}
-	//定义Men类型的变量
+	//定义Men类型的变量(interface类型变量能存储实现了这个接口的所有对象实例)
 	var i Mem
 
 	//i能存储Student，也能存Employee
@@ -84,7 +84,7 @@ func main() {
 	fmt.Println("This is mike,a Student:")
 	i.Sayhi()
 	i.Sing("我爱你中国..")
-	fmt.Println("定义的interface变量里可以存储实现这个interface的任意类型的对象")
+	fmt.Println("定义的interface变量里可以存储实现了这个interface的任意类型的对象")
 
 	//将interface作为类型存放在slice里
 	x := make([]Mem,3)
@@ -97,12 +97,13 @@ func main() {
 	var a interface{}
 	var r int = 5
 	s := "hello world!"
-	a = r
-	a = s  //空接口可以存储任意类型的数值
-	fmt.Println(a)
+	a = r  //空接口可以存储任意类型的数值
+	a = s  //同上
+	fmt.Println("interface{} is value:",a)
 
 
 	//任何实现了String方法的类型都能作为参数被fmt.Println调用，如果没实现String方法，fmt将以默认方式输出
 	abc := Human{"Abc",39,"11111"}
+	//打印abc就会主动调用Human的string()方法
 	fmt.Println("This Human is: ", abc) //This Human is:  ❰Abc - 39 years -  ✆ 11111❱
 }

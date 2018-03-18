@@ -45,8 +45,6 @@ func fibonacci1(c,quit chan int) {
 		case <- quit:  //如果quit这个channel收到数据，程序退出
 			fmt.Println("quit..")
 			return
-		default:  //select的default语句
-			fmt.Println("done!")
 		}
 	}
 }
@@ -59,7 +57,7 @@ func main() {
 	//channels 通道--必须使用make创建channel
 	//定义接受int类型的channel
 	a := []int{7,2,8,-9,4,0}
-	cl := make(chan int)  //定义channel时，也需要指定发送或者接受着的值的类型
+	cl := make(chan int)  //定义channel时，也需要指定发送或者接受者值的类型
 	cs := make(chan string) //定义接受string类型的channel
 	var cf chan int = make(chan int)  //也可以这样定义channel
 	fmt.Println(cl, cs, cf)  //0xc042084000 0xc042084060 0xc0420840c0
@@ -73,8 +71,7 @@ func main() {
 	c := make(chan int,10)  //指定channel最多可以同时接收或者发送10个
 	go fibonacci(20,c)  //cap(c)等于10
 	for i := range c {    //range不等到信道关闭是不会结束读取的,range会阻塞当前goroutine,产生死锁
-		fmt.Println("---:",i)
-		fmt.Println(i)  //打印channel里的数据（取数据）
+		fmt.Println("取到数据:",i)  //打印channel里的数据（取数据）
 	}
 
 	//channel的select
@@ -84,7 +81,7 @@ func main() {
 		for i :=0;i < 10; i++ {
 			fmt.Println(<- c1)  //接收channel数据
 		}
-		quit <- 0  //想quit的channel发送数据
+		quit <- 0  //向quit的channel发送数据
 	}()
 	fibonacci1(c1,quit)
 
@@ -103,5 +100,5 @@ func main() {
 			}
 		}
 	}()
-	<- o
+	<- o  //接收channel里的数据
 }

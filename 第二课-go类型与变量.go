@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"math"
-	"strconv"
+	"math"   //科学计算的包
+	"strconv"  //字符串转换包
 )
 
 
@@ -43,10 +43,10 @@ func main()  {
 	fmt.Println(ttt)  /* 输出结果："65". */
 	fmt.Println(tttt)  /* 输出结果：65. */
 	fmt.Println(result)  /* 变量被声明后都会有默认值；值类型(int,float)的默认值是0，布尔值类型为false，字符串类型为空  */
-	fmt.Println(str)
-	fmt.Println(num)
+	fmt.Println(str)  //输出：空
+	fmt.Println(num)  //输出：0
 	fmt.Println(int64max) /* 查看int64类型的最大值 */
 	fmt.Println(a,b,c,d,e,g)
-	fmt.Println(ww)
+	fmt.Println(ww)  //输出：32
 }
 

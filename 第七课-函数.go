@@ -24,7 +24,7 @@ func SumAndProduct(A,B int)(int,int) {
 	/* fmt.Print("会不会执行呢?") */
 }
 
-/* 在初始化函数是，命名返回值变量.官方不太建议这样做  */
+/* 在初始化函数里，命名返回值变量.官方不太建议这样做  */
 func SumAndProducts(A,B int) (Add int, Multiplied int) {  /* 定义了返回值变量名称  */
 	Add = A + B
 	Multiplied = A * B
@@ -93,7 +93,7 @@ func filter(slice []int,f testInt) []int {
 }
 
 /*  Panic和Recover
- panic：由程序运行出错产出或者直接调用panic产生，panic中断原有控制流程，如果有defer函数，会跳到执行defer函数，否则异常退出
+ panic：由程序运行出错或者直接调用panic产生，panic会中断原有控制流程，如果有defer函数，会跳到执行defer函数，否则异常退出
  recover：恢复异常，仅在defer函数中有效；正常执行过程中，调用recover返回nil，panic模式下，调用recover可以捕获到panic的输入值，并且恢复正常的执行
  */
 func myPainc() {
@@ -130,7 +130,7 @@ func main() {
 
 	xPLUSY, xTIMESY := SumAndProduct(x,y)  /* 函数多返回值  */
 	fmt.Printf("%d + %d = %d\n", x, y, xPLUSY)
-    	fmt.Printf("%d * %d = %d\n", x, y, xTIMESY)
+	fmt.Printf("%d * %d = %d\n", x, y, xTIMESY)
 
 	ArgFunc(1,2,3,4,5,6)  /* 没返回值的函数直接调用  */
 	ArgFunc(x,y,z) /* 同上 */
@@ -161,6 +161,8 @@ func main() {
 		}
 		fmt.Print("defer执行完成\n")
 	}()
+
+	//调用自定义的painc函数，触发异常，程序会走到defer函数
 	myPainc()   /* 调用自定义的panic函数  */
 
 

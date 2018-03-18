@@ -51,11 +51,15 @@ func main() {
 	如果超过追加到的slice的容量则将重新分配数组并拷贝原始数据
 	*/
 	s8 := make([]int,3,6)
-	fmt.Printf("%p\n",s8) /* 打印内存地址：0xc042066030 */
+	fmt.Printf("%v %p,%v\n",s8,s8,cap(s8)) /* [0 0 0] 0xc04200a1e0,6 */
 	s8 = append(s8,1,2,3)
-	fmt.Printf("%v %p\n",s8,s8) /*  输出：[0 0 0 1 2 3] 0xc04200a1e0；内存地址没变 */
+	fmt.Printf("%v %p,%v\n",s8,s8,cap(s8)) /*[0 0 0 1 2 3] 0xc04200a1e0,6；内存地址没变 */
 	s8 = append(s8,4,5,6)
-	fmt.Printf("%v %p\n",s8,s8) /*  输出：[0 0 0 1 2 3 4 5 6] 0xc04203c060；内存变了，因为cap容量到上限了，重新分配了*/
+	fmt.Printf("%v %p,%v\n",s8,s8,cap(s8)) /*[0 0 0 1 2 3 4 5 6] 0xc04203c060,12；内存变了，因为cap容量到上限了，重新分配了*/
+	new_s := []int{11,22,33}
+	//如果需要将一个slice追加到另一个slice中，需要在被追加的slice后面加上...
+	new_s = append(new_s, s8...)
+	fmt.Printf("%v %v %v\n",new_s,len(new_s),cap(new_s)) //[11 22 33 0 0 0 1 2 3 4 5 6] 12 12
 
 	a3 := [5]int{1,2,3,4,5}
 	s9 := a3[2:5]

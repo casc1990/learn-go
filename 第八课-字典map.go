@@ -17,7 +17,7 @@ func main() {
 	numbers["one"] = 1  //赋值
 	numbers["two"] = 2
 	numbers["three"] = 3
-	fmt.Println("number：",number) /* 输出：number： map[] */
+	fmt.Println("number：",number) /* 输出：number： map[];空字典 */
 	//读取数据
 	fmt.Printf("numbers字典里key是three的值是：%d\n",numbers["three"]) //numbers字典里key是three的值是：3
 	//修改数据或者新增（key存在修改，不存在新增）
@@ -49,5 +49,6 @@ func main() {
 	m1 := m
 	m1["Hello"] = "xiaomei"
 	fmt.Print(m["Hello"])  //现在m["Hello"]的值是xiaomei
+
 
 }

@@ -61,14 +61,14 @@ func main()  {
 	mark := Student{Human:Human{"Mark",25,120,123456789},speciality:"computer Science"}
 	fmt.Println("His name is",mark.name) //直接访问
 	fmt.Println("His speciality is ", mark.speciality)
-    	mark.speciality = "AI" //修改字段
-    	fmt.Println("Mark changed his speciality")
-    	fmt.Println("His speciality is ", mark.speciality)
-    	fmt.Println("Mark become old")
-    	mark.age = 46 // 修改他的年龄信息
-    	fmt.Println("His age is", mark.age)
+	mark.speciality = "AI" //修改字段
+	fmt.Println("Mark changed his speciality")
+	fmt.Println("His speciality is ", mark.speciality)
+	fmt.Println("Mark become old")
+	mark.age = 46 // 修改他的年龄信息
+	fmt.Println("His age is", mark.age)
 	//通过匿名字段访问或者修改
-	mark.Human = Human{"AAA",55,221,123456789}  // 通过匿名字段访问
+	mark.Human = Human{"AAA",55,221,123456789}  // 通过匿名字段修改
 	mark.Human.age -= 1  //年龄减一岁
 	fmt.Println("His age is", mark.age)
 
