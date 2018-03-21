@@ -1,4 +1,4 @@
-package main
+package go基础语法
 
 //method:是附属在一个给定的类型上的，他的语法和函数的声明语法几乎一样，只是在func后面增加了一个receiver(也就是method所依从的主体)
 //  定义语法：func (r 作用于的那个主体) methodName(参数,...) (返回值类型) {}

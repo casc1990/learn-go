@@ -1,4 +1,4 @@
-package main
+package go基础语法
 
 //struct：用来描述一组类型或者字段的集合,集合里的类型或者字段叫做属性（struct也是传值的）
 //struct匿名字段：只提供类型，而不写字段名的struct，匿名字段可以包括所有的类型。如果匿名字段是struct类型，那么这个struct所拥有的全部字段都

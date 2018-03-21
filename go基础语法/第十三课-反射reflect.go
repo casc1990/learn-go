@@ -1,4 +1,4 @@
-package main
+package go基础语法
 //所谓反射就是能检查程序在运行时的状态
 import (
 	"fmt"

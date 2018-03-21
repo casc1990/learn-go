@@ -1,4 +1,4 @@
-package main
+package go基础语法
 //判断interface变量存储的对象类型：第一：Comma-ok断言  第二：switch测试
 //判断是否是该类型的变量： value, ok = element.(T)，这里value就是变量的值，ok是一个bool类型，element是interface变量，T是断言的类型。
 import (

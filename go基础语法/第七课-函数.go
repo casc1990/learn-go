@@ -1,4 +1,4 @@
-package main
+package go基础语法
 /* 函数是go里面的核心设计，使用func关键字声明
   func funcname(input1 type,input2 type2..) (output1 type1,output2,type2..) {
   	//这里是处理逻辑代码

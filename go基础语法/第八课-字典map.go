@@ -1,4 +1,4 @@
-package main
+package go基础语法
 // map也是python中字典的概念，格式: map[keytype]valuetype
 /* make函数和new函数
 	make函数：用于内建类型（map、slice 和channel）的内存分配。make返回初始化后的（非零）值。

@@ -1,4 +1,4 @@
-package main
+package go基础语法
 //goroutine说到底其实就是线程，goroutine是通过Go的runtime管理的一个线程管理器.goroutine通过go关键字实现
 import (
 	"fmt"

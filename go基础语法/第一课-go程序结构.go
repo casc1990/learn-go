@@ -1,5 +1,5 @@
 /* 当前代码的包名称,package必须放在行首  */
-package main
+package go基础语法
 
 /*  导入其他的包,导入未调用，也会报编译异常  */
 import std "fmt"   /*  设置导入包别名 */

@@ -1,4 +1,4 @@
-package main
+package go基础语法
 /*
 数组定义格式：var varName [n]<type> n>0
 数组长度也是类型的一部分，因此具有不同长度的数组为不同类型
