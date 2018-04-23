@@ -61,7 +61,7 @@ func trans(root *Student) {
 		return
 	}
 	//打印节点内容
-	fmt.Println(*root)
+	//fmt.Println(*root)
 
 	//使用递归，不断的打印每一层节点的left子节点(比如：第一次是root-left1，第二层就是root-left1.left...)
 	trans(root.left)
