@@ -3,13 +3,28 @@ package main
 import (
 	 "fmt"
 	"html/template"
-	"os"
+	"net/http"
 )
 
+//定义一个模板变量
+var myTemplate *template.Template
+
+//定义一个结构体，用于将结构体的字段传递给表单
 type Person struct {
 	Name string
 	Age int
-	score float32
+	Score float32
+	Title string
+}
+
+//初始化模板函数,（解析模板文件：template.ParseFiles）
+func initTemplate(tep string) (err error) {
+	myTemplate,err = template.ParseFiles(tep)
+	if err != nil {
+		fmt.Println("parse html file err:",err)
+		return
+	}
+	return
 }
 
 func checkErr(err error) {
@@ -18,19 +33,27 @@ func checkErr(err error) {
 	}
 }
 
+//路由处理函数（接收http.ResponseWriter和http.Request参数即可）
+func UserInfo(w http.ResponseWriter,r *http.Request) {
+	//fmt.Println("handle hello")
+	//fmt.Fprintf(w,"hello!")
+
+	//实例化结构体，将结构体传递给表单渲染
+	p := Person{Name:"stu01",Age:28,Score:89,Title:"我的个人网站"}
+	myTemplate.Execute(w,p) //渲染模板
+}
+
+
+
 func main() {
-	t,err := template.ParseFiles("D:/python-projects/learn-go/example/day10/example5-template/main/index.html")
+
+	initTemplate("D:/go-project/src/learn-go/example/day10/example5-template/main/index.html")
+	//路由注册
+	http.HandleFunc("/user/info",UserInfo)
+	//监听并初始化
+	err := http.ListenAndServe("0.0.0.0:8080",nil)
 	if err != nil {
-		fmt.Println("parse html file err:",err)
-		return
+		fmt.Println("http listen failed",err)
 	}
 
-	p := Person{
-		Name: "stu01",
-		Age: 18,
-		score: 90,
-	}
-	if err := t.Execute(os.Stdout,p); err != nil {
-		fmt.Println("there was an err:",err.Error())
-	}
 }
