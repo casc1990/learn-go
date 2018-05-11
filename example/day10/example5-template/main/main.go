@@ -39,8 +39,14 @@ func UserInfo(w http.ResponseWriter,r *http.Request) {
 	//fmt.Fprintf(w,"hello!")
 
 	//实例化结构体，将结构体传递给表单渲染
+	arr := []Person{}
 	p := Person{Name:"stu01",Age:28,Score:89,Title:"我的个人网站"}
-	myTemplate.Execute(w,p) //渲染模板
+	p1 := Person{Name:"stu02",Age:29,Score:90,Title:"sut02的网站"}
+	p3 := Person{Name:"stu03",Age:30,Score:91,Title:"sut03的网站"}
+	arr = append(arr,p)
+	arr = append(arr,p1)
+	arr = append(arr,p3)
+	myTemplate.Execute(w,arr) //渲染模板
 }
 
 

@@ -2,13 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{.Title}}</title>
+    <title>example5</title>
 </head>
 <body>
+    {{ range .}}
     {{ if gt .Age 18 }}
-    <p> hello, old man, {{.Name}} </p>
+    <table border="1">
+        <tr>
+            <td>{{.Name}}</td> <td>{{.Age}}</td> <td>{{.Score}}</td>  <td>{{.Title}}</td>
+        </tr>
+    </table>
     {{ else }}
-    <p> hello,young man, {{.Name}} </p>
+    <p> hello,young man </p>
+    <table border="1">
+        <tr>
+            <td>{{.Name}}</td> <td>{{.Age}}</td> <td>{{.Score}}</td>  <td>{{.Title}}</td>
+        </tr>
+    </table>
+    {{end}}
     {{end}}
     <p> {{.}} </p>
 </body>
