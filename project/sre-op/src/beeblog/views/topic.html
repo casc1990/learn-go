@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <!-- 使用模板 -->
+  {{template "header"}}
+  <title>文章-我的beego博客</title>
+</head>
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            {{template "navbar" .}}  <!-- 导入模板，.代表值可以传递 -->
+        </div>
+    </div>
+
+
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <h1>文章列表</h1>
+        <a href="/topic/add" class="btn btn-default">添加文章</a>
+        <script type="text/javascript">
+            function checkInput() {
+                var name = document.getElementById("name")
+                if (name.value.length == 0) {
+                    alert("请输入分类名称");
+                    return false
+                }
+                return true
+            }
+        </script>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>文章名称</th>
+                    <th>最后更新</th>
+                    <th>浏览</th>
+                    <th>回复数</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Topics}}
+                  <tr>
+                    <th>{{.Id}}</th>
+                    <th>{{.Title}}</th>
+                    <th>{{.Updated}}</th>
+                      <th>{{.Views}}</th>
+                    <th>{{.ReplyCount}}</th>
+                <tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstarp.min.js"></script>
+</body>
+</html>
